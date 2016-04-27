@@ -10,16 +10,30 @@
 	<table border=1>
 		<thead>
 			<tr>
-				<th>User Id</th>
+				<th>Id</th>
 				<th>First Name</th>
 				<th>Last Name</th>
-				<th>DOB</th>
+				<th>Middle Name</th>
+				<th>Birthday date</th>
 				<th>Email</th>
 				<th colspan=2>Action</th>
 			</tr>
 		</thead>
 		<tbody>
-			
+			<c:forEach items="${clients}" var="client">
+				<tr>
+					<td><c:out value="${client.id}" /></td>
+					<td><c:out value="${client.first_name}" /></td>
+					<td><c:out value="${client.last_name}" /></td>
+					<td><c:out value="${client.middle_name}" /></td>
+					<td><fmt:formatDate pattern="yyyy-MMM-dd" value="${client.birthday_date}" /></td>
+					<td><c:out value="${client.email}" /></td>
+					<td><a
+						href="ClientsController?action=edit&userId="<c:out value="${client.userid}"/>">Update</a></td>
+					<td><a
+						href="ClientsController?action=delete&userId="<c:out value="${client.userid}"/>">Delete</a></td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 	<p>

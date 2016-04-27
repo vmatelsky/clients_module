@@ -1,6 +1,6 @@
 package com.model;
 
-class City {
+public class City {
 	private int id;
 	private String name;
 

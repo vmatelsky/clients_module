@@ -1,12 +1,17 @@
 package com.module.clients;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.bsuir.dao.ClientDao;
+import com.model.Client;
 
 /**
  * Servlet implementation class ClientsController
@@ -18,12 +23,15 @@ public class ClientsController extends HttpServlet {
 	private static String CLIETN = "/client.jsp";
 	private static String CLIETNS = "/clients.jsp";
 	
+	
+	private ClientDao dao;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public ClientsController() {
         super();
+        dao = new ClientDao();
     }
 
 	/**
@@ -35,7 +43,8 @@ public class ClientsController extends HttpServlet {
 		
 		if (action.equalsIgnoreCase("clients")) {
 			forward = CLIETNS;
-//			request.setAttribute("users", dao.getAllUsers());
+			List<Client> clients = dao.getClients();
+			request.setAttribute("clients", clients);
 		} if (action.equalsIgnoreCase("insert")) {
 			forward = CLIETN;
 //			request.setAttribute("users", dao.getAllUsers());

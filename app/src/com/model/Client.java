@@ -2,7 +2,7 @@ package com.model;
 
 import java.util.Date;
 
-class Client {
+public class Client {
 	private int id;
 	private String first_name;
 	private String last_name;
