@@ -7,6 +7,6 @@
 <title>Clients list</title>
 </head>
 <body>
-	<jsp:forward page="/ClientsController?action=clientsList" />
+	<jsp:forward page="/ClientsController?action=clients" />
 </body>
 </html>

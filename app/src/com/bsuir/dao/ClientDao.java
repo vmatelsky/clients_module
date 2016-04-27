@@ -23,12 +23,12 @@ public class ClientDao {
         // TODO:
     }
 
-    public void deleteClient(Client client) {
+    public void deleteClient(int clientId) {
         try {
             PreparedStatement preparedStatement = connection
                     .prepareStatement("DELETE FROM clients WHERE id=?");
 
-            preparedStatement.setInt(1, client.getId());
+            preparedStatement.setInt(1, clientId);
             
             preparedStatement.executeUpdate();
 
