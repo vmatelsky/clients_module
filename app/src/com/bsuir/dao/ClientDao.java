@@ -13,7 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.bsuir.utils.DbUtils;
+import com.model.City;
 import com.model.Client;
+import com.model.Disability;
+import com.model.MartialStatus;
+import com.model.Nationality;
 
 public class ClientDao {
 	
@@ -62,6 +66,87 @@ public class ClientDao {
 
         return clients;
     }
+    
+    public List<City> getCities() {
+    	List<City> cities = new ArrayList<City>();
+        try {
+            Statement statement = connection.createStatement();
+            
+            
+			ResultSet rs = statement.executeQuery("SELECT * FROM cities");
+            while (rs.next()) {
+                City city = new City();
+                city.setId(rs.getInt("id"));
+                city.setName(rs.getString("name"));
+                
+                cities.add(city);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return cities;
+	}
+    
+    public List<Disability> getDisabilities() {
+    	List<Disability> disabilities = new ArrayList<Disability>();
+        try {
+            Statement statement = connection.createStatement();
+            
+			ResultSet rs = statement.executeQuery("SELECT * FROM disability");
+            while (rs.next()) {
+            	Disability item = new Disability();
+                item.setId(rs.getInt("id"));
+                item.setName(rs.getString("name"));
+                
+                disabilities.add(item);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return disabilities;
+	}
+    
+    public List<MartialStatus> getMartialStatusList() {
+    	List<MartialStatus> list = new ArrayList<MartialStatus>();
+        try {
+            Statement statement = connection.createStatement();
+            
+			ResultSet rs = statement.executeQuery("SELECT * FROM martial_status");
+            while (rs.next()) {
+            	MartialStatus item = new MartialStatus();
+                item.setId(rs.getInt("id"));
+                item.setName(rs.getString("name"));
+                
+                list.add(item);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return list;
+	}
+    
+    public List<Nationality> getNationalities() {
+    	List<Nationality> list = new ArrayList<Nationality>();
+        try {
+            Statement statement = connection.createStatement();
+            
+			ResultSet rs = statement.executeQuery("SELECT * FROM nationality");
+            while (rs.next()) {
+            	Nationality item = new Nationality();
+                item.setId(rs.getInt("id"));
+                item.setName(rs.getString("name"));
+                
+                list.add(item);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return list;
+	}
 
 	private Client clientFromResultSet(ResultSet rs) throws SQLException {
 		Client client = new Client();

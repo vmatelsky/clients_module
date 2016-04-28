@@ -37,6 +37,12 @@
     			</td>
     		</tr>
     		<tr>
+    			<td>Middle Name : </td>
+    			<td>
+    				<input type="text" name="middle_name" value="<c:out value="${client.middle_name}" />" /> <br /> 
+    			</td>
+    		</tr>
+    		<tr>
     			<td>Last Name : </td>
     			<td>
     				<input type="text" name="last_name" value="<c:out value="${client.last_name}" />" /> <br /> 
@@ -53,7 +59,7 @@
     			<td>
     			<div>
     				<label for="male">Male</label>
-  					<input type="radio" name="gender" id="male" value="male"><br>
+  					<input type="radio" name="gender" id="male" value="male" checked><br>
   					<label for="female">Female</label>
   					<input type="radio" name="gender" id="female" value="female"><br>
   					<label for="other">Other</label>
@@ -98,13 +104,131 @@
     				<input type="text" name="birthday_place" value="<c:out value="${client.birthday_place}" />" /> <br />  
     			</td>
     		</tr>
+    		<tr>
+    			<td>Actual residential city : </td>
+    			<td>
+    			<select name="TypeServ">
+    				<c:forEach items="${cities}" var="city">
+    					<option value="${city.id}"> <c:out value="${city.name}" /> </option>
+    				</c:forEach>
+				</select>  
+    			</td>
+    		</tr>
+    		
+    		<tr>
+    			<td>Actual address : </td>
+    			<td>
+    				<input type="text" name="actual_address" value="<c:out value="${client.actual_address}" />" /> <br />  
+    			</td>
+    		</tr>
+    		
+    		<tr>
+    			<td>Home phone number : </td>
+    			<td>
+    				<input type="text" name="home_phone_number" value="<c:out value="${client.home_phone_number}" />" /> <br />  
+    			</td>
+    		</tr>
+    		
+    		<tr>
+    			<td>Cellular phone number : </td>
+    			<td>
+    				<input type="text" name="cellular_phone_number" value="<c:out value="${client.cellular_phone_number}" />" /> <br />  
+    			</td>
+    		</tr>
     		
     		<tr>
     			<td>Email : </td>
     			<td>
-    				<input type="text" name="email" />" /> <br />
+    				<input type="text" name="email" value="<c:out value="${client.email}" />" /> <br />  
     			</td>
     		</tr>
+    		
+    		<tr>
+    			<td>Place of work : </td>
+    			<td>
+    				<input type="text" name="place_of_work" value="<c:out value="${client.place_of_work}" />" /> <br />  
+    			</td>
+    		</tr>
+    		
+    		<tr>
+    			<td>Job title : </td>
+    			<td>
+    				<input type="text" name="job_title" value="<c:out value="${client.job_title}" />" /> <br />  
+    			</td>
+    		</tr>
+    		
+    		<tr>
+    			<td>Residential city : </td>
+    			<td>
+    			<select name="TypeServ1">
+    				<c:forEach items="${cities}" var="city">
+    					<option value="${city.id}"> <c:out value="${city.name}" /> </option>
+    				</c:forEach>
+				</select>  
+    			</td>
+    		</tr>
+    		
+    		<tr>
+    			<td>Residential address : </td>
+    			<td>
+    				<input type="text" name="residential_address" value="<c:out value="${client.residential_address}" />" /> <br />  
+    			</td>
+    		</tr>
+    		
+    		<tr>
+    			<td>Martial status : </td>
+    			<td>
+    			<select name="TypeServ1">
+    				<c:forEach items="${marital_status}" var="item">
+    					<option value="${item.id}"> <c:out value="${item.name}" /> </option>
+    				</c:forEach>
+				</select>  
+    			</td>
+    		</tr>
+    		
+    		<tr>
+    			<td>Nationality : </td>
+    			<td>
+    			<select name="TypeServ1">
+    				<c:forEach items="${nationalities}" var="item">
+    					<option value="${item.id}"> <c:out value="${item.name}" /> </option>
+    				</c:forEach>
+				</select>  
+    			</td>
+    		</tr>
+    		
+    		<tr>
+    			<td>Disabilities : </td>
+    			<td>
+    			<select name="TypeServ1">
+    				<c:forEach items="${disabilities}" var="item">
+    					<option value="${item.id}"> <c:out value="${item.name}" /> <c:if test="${client.disability_id} == ${item.id}">selected</c:if> </option>
+    				</c:forEach>
+				</select>  
+    			</td>
+    		</tr>
+    		
+    		<tr>
+    			<td>Retired : </td>
+    			<td>
+    				<input type="checkbox" name="is_retired" <c:if test="${client.is_retired}">checked</c:if> /> <br />  
+    			</td>
+    		</tr>
+    		
+    		<tr>
+    			<td>Residential address : </td>
+    			<td>
+    				<input type="text" name="monthly_income" value="<c:out value="${client.monthly_income}" />" /> <br />  
+    			</td>
+    		</tr>
+    		
+    		<tr>
+    			<td>Reservist : </td>
+    			<td>
+    				<input type="checkbox" name="is_reservist" <c:if test="${client.is_reservist}">checked</c:if> /> <br />  
+    			</td>
+    		</tr>
+    		
     	</table>		 
         
         </div>

@@ -21,19 +21,10 @@
 				<th>Id</th>
 				<th>First Name</th>
 				<th>Last Name</th>
-				<th>Middle Name</th>
 				<th>Birthday date</th>
-				<th>Gender</th>
-				<th>Passport series</th>
-				<th>Passport number</th>
-				<th>Passport authority</th>
-				
-				<th>Passport issue date</th>
-				<th>Passport No</th>
-				<th>Birthday place</th>
-				
+								
 				<th>Email</th>
-				<th colspan=2>Action</th>
+				<th colspan=3>Action</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -42,9 +33,10 @@
 					<td><c:out value="${client.id}" /></td>
 					<td><c:out value="${client.first_name}" /></td>
 					<td><c:out value="${client.last_name}" /></td>
-					<td><c:out value="${client.middle_name}" /></td>
+					
 					<td><fmt:formatDate pattern="yyyy-MMM-dd" value="${client.birthday_date}" /></td>
-					<td><c:out value="${client.gender}" /></td>
+					<td><c:out value="${client.email}" /></td>
+					<%-- <td><c:out value="${client.gender}" /></td>
 					<td><c:out value="${client.passport_series}" /></td>
 					<td><c:out value="${client.passport_number}" /></td>
 					<td><c:out value="${client.passport_authority}" /></td>
@@ -65,8 +57,10 @@
 					<td><c:out value="${client.disability_id}" /></td>
 					<td><c:out value="${client.is_retired}" /></td>
 					<td><c:out value="${client.monthly_income}" /></td>
-					<td><c:out value="${client.is_reservist}" /></td>
+					<td><c:out value="${client.is_reservist}" /></td> --%>
 					
+					<td><a
+						href="ClientsController?action=view&clientId=<c:out value="${client.id}" />">View</a></td>
 					<td><a
 						href="ClientsController?action=edit&clientId=<c:out value="${client.id}" />">Update</a></td>
 					<td><a

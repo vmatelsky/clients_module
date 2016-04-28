@@ -54,12 +54,20 @@ public class ClientsController extends HttpServlet {
 			
 		} else if (ACTION_INSERT.equalsIgnoreCase(action)) {
 			forward = INSERT_OR_EDIT;
+			request.setAttribute("cities", dao.getCities());
+			request.setAttribute("nationalities", dao.getNationalities());
+			request.setAttribute("marital_status", dao.getMartialStatusList());
+			request.setAttribute("disabilities", dao.getDisabilities());
 			
 		} else if (ACTION_EDIT.equalsIgnoreCase(action)) {
 			forward = INSERT_OR_EDIT;
 			int clientId = Integer.parseInt(request.getParameter("clientId"));
 			Client client = dao.getById(clientId);
 			request.setAttribute("client", client);
+			request.setAttribute("cities", dao.getCities());
+			request.setAttribute("nationalities", dao.getNationalities());
+			request.setAttribute("marital_status", dao.getMartialStatusList());
+			request.setAttribute("disabilities", dao.getDisabilities());
 			
 		} else if (ACTION_DELETE.equalsIgnoreCase(action)) {
 			forward = CLIENTS;
