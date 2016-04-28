@@ -22,7 +22,7 @@
     </script>
 
     <form method="POST" action='ClientsController' name="addClient">
-    <div  >
+    <div class="CSSTableGenerator" >
     	<table>
     		<tr>
     			<td>Client ID : </td>
@@ -109,7 +109,7 @@
     			<td>
     			<select name="TypeServ">
     				<c:forEach items="${cities}" var="city">
-    					<option value="${city.id}"> <c:out value="${city.name}" /> </option>
+    					<option value="${city.id}" ${city.id == client.actual_residential_city_id ? 'selected="selected"' : ''}> <c:out value="${city.name}" /> </option>
     				</c:forEach>
 				</select>  
     			</td>
@@ -162,7 +162,7 @@
     			<td>
     			<select name="TypeServ1">
     				<c:forEach items="${cities}" var="city">
-    					<option value="${city.id}"> <c:out value="${city.name}" /> </option>
+    					<option value="${city.id}" ${city.id == client.resirential_city_id ? 'selected="selected"' : ''} > <c:out value="${city.name}" /> </option>
     				</c:forEach>
 				</select>  
     			</td>
@@ -180,7 +180,7 @@
     			<td>
     			<select name="TypeServ1">
     				<c:forEach items="${marital_status}" var="item">
-    					<option value="${item.id}"> <c:out value="${item.name}" /> </option>
+    					<option value="${item.id}" ${item.id == client.martial_status_id ? 'selected="selected"' : ''} > <c:out value="${item.name}" /> </option>
     				</c:forEach>
 				</select>  
     			</td>
@@ -191,7 +191,7 @@
     			<td>
     			<select name="TypeServ1">
     				<c:forEach items="${nationalities}" var="item">
-    					<option value="${item.id}"> <c:out value="${item.name}" /> </option>
+    					<option value="${item.id}" ${item.id == client.nationality_id ? 'selected="selected"' : ''} > <c:out value="${item.name}" /> </option>
     				</c:forEach>
 				</select>  
     			</td>
@@ -202,7 +202,7 @@
     			<td>
     			<select name="TypeServ1">
     				<c:forEach items="${disabilities}" var="item">
-    					<option value="${item.id}"> <c:out value="${item.name}" /> <c:if test="${client.disability_id} == ${item.id}">selected</c:if> </option>
+    					<option value="${item.id}" ${item.id == client.disability_id ? 'selected="selected"' : ''} > <c:out value="${item.name}" /> </option>
     				</c:forEach>
 				</select>  
     			</td>
