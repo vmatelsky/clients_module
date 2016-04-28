@@ -1,5 +1,9 @@
 package com.bsuir.dao;
 
+import java.io.IOException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -45,12 +49,14 @@ public class ClientDao {
         List<Client> clients = new ArrayList<Client>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM clients");
+            
+            String fileAsString = fileAsString("/getAllClients.sql");
+			ResultSet rs = statement.executeQuery(fileAsString);
             while (rs.next()) {
                 Client client = clientFromResultSet(rs);
                 clients.add(client);
             }
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
 
@@ -87,14 +93,21 @@ public class ClientDao {
 		client.setIs_retired(rs.getBoolean("is_retired"));
 		client.setMonthly_income(rs.getDouble("monthly_income"));
 		client.setIs_reservist(rs.getBoolean("is_reservist"));
+		
+		client.setActual_residential_city(rs.getString("actual_city"));
+		client.setResirential_city(rs.getString("residential_city"));
+		client.setMartial_status(rs.getString("martial_status"));
+		client.setNationality(rs.getString("nationality"));
+		client.setDisability(rs.getString("disability_name"));
+		
 		return client;
 	}
 
     public Client getById(int clientId) {
     	Client client = new Client();
         try {
-            PreparedStatement preparedStatement = connection.
-                    prepareStatement("SELECT * FROM clients WHERE id=?");
+        	String fileAsString = fileAsString("/getById.sql");
+            PreparedStatement preparedStatement = connection.prepareStatement(fileAsString);
             
             preparedStatement.setInt(1, clientId);
             
@@ -102,11 +115,16 @@ public class ClientDao {
             if (rs.next()) {
             	client = clientFromResultSet(rs);
             }
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
 
         return client;
+    }
+    
+    public String fileAsString(String filePath) throws IOException {
+    	URL resourcePath = DbUtils.class.getClassLoader().getResource(filePath);
+    	return new String(Files.readAllBytes(Paths.get(resourcePath.getPath())));
     }
 
 }

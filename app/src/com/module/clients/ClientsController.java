@@ -20,6 +20,12 @@ import com.model.Client;
 public class ClientsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	private static String ACTION_CLIENTS = "clients";
+	private static String ACTION_EDIT = "edit";
+	private static String ACTION_INSERT = "insert";
+	private static String ACTION_DELETE = "delete";
+	
+	
 	private static String INSERT_OR_EDIT = "/client.jsp";
 	private static String CLIENTS = "/clients.jsp";
 	
@@ -41,23 +47,27 @@ public class ClientsController extends HttpServlet {
 		String forward = "";
 		String action = request.getParameter("action");
 		
-		if (action.equalsIgnoreCase("clients")) {
+		if (ACTION_CLIENTS.equalsIgnoreCase(action)) {
 			forward = CLIENTS;
 			List<Client> clients = dao.getClients();
 			request.setAttribute("clients", clients);
-		} if (action.equalsIgnoreCase("insert")) {
+			
+		} else if (ACTION_INSERT.equalsIgnoreCase(action)) {
 			forward = INSERT_OR_EDIT;
-		} if (action.equalsIgnoreCase("edit")) {
+			
+		} else if (ACTION_EDIT.equalsIgnoreCase(action)) {
 			forward = INSERT_OR_EDIT;
 			int clientId = Integer.parseInt(request.getParameter("clientId"));
 			Client client = dao.getById(clientId);
 			request.setAttribute("client", client);
-		} else if (action.equalsIgnoreCase("delete")) {
+			
+		} else if (ACTION_DELETE.equalsIgnoreCase(action)) {
 			forward = CLIENTS;
 			int clientId = Integer.parseInt(request.getParameter("clientId"));
 			dao.deleteClient(clientId);
 			List<Client> clients = dao.getClients();
 			request.setAttribute("clients", clients);
+			
 		} else {
 			forward = CLIENTS;
 		}

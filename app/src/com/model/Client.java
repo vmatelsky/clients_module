@@ -31,6 +31,12 @@ public class Client {
 	private double monthly_income;
 	private boolean is_reservist;
 
+	private String actual_residential_city;
+	private String resirential_city;
+	private String martial_status;
+	private String nationality;
+	private String disability;
+	
 	public String getFirst_name(){
 		return first_name;
 	}
@@ -246,4 +252,45 @@ public class Client {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	public String getActual_residential_city() {
+		return actual_residential_city;
+	}
+
+	public void setActual_residential_city(String actual_residential_city) {
+		this.actual_residential_city = actual_residential_city;
+	}
+
+	public String getResirential_city() {
+		return resirential_city;
+	}
+
+	public void setResirential_city(String resirential_city) {
+		this.resirential_city = resirential_city;
+	}
+
+	public String getMartial_status() {
+		return martial_status;
+	}
+
+	public void setMartial_status(String martial_status) {
+		this.martial_status = martial_status;
+	}
+
+	public String getNationality() {
+		return nationality;
+	}
+
+	public void setNationality(String nationality) {
+		this.nationality = nationality;
+	}
+
+	public String getDisability() {
+		return disability;
+	}
+
+	public void setDisability(String disability) {
+		this.disability = disability;
+	}
+
 }

@@ -51,7 +51,7 @@
 					<td><fmt:formatDate pattern="yyyy-MMM-dd" value="${client.passport_issue_date}" /></td>
 					<td><c:out value="${client.passport_identification_number}" /></td>
 					<td><c:out value="${client.birthday_place}" /></td>
-					<td><c:out value="${client.actual_residential_city_id}" /></td>
+					<td><c:out value="${client.actual_residential_city}" /></td>
 					<td><c:out value="${client.actual_address}" /></td>
 					<td><c:out value="${client.home_phone_number}" /></td>
 					<td><c:out value="${client.cellular_phone_number}" /></td>
