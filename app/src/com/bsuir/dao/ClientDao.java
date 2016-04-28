@@ -47,15 +47,7 @@ public class ClientDao {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM clients");
             while (rs.next()) {
-                Client client = new Client();
-                client.setId(rs.getInt("id"));
-                client.setFirst_name(rs.getString("first_name"));
-                client.setLast_name(rs.getString("last_name"));
-                client.setMiddle_name(rs.getString("middle_name"));
-                client.setBirthday_date(rs.getDate("birthday_date"));
-
-                // TODO: add the rest fields
-                
+                Client client = clientFromResultSet(rs);
                 clients.add(client);
             }
         } catch (SQLException e) {
@@ -64,6 +56,39 @@ public class ClientDao {
 
         return clients;
     }
+
+	private Client clientFromResultSet(ResultSet rs) throws SQLException {
+		Client client = new Client();
+		client.setId(rs.getInt("id"));
+		client.setFirst_name(rs.getString("first_name"));
+		client.setLast_name(rs.getString("last_name"));
+		client.setMiddle_name(rs.getString("middle_name"));
+		client.setBirthday_date(rs.getDate("birthday_date"));
+		
+		client.setGender(rs.getString("gender"));
+		client.setPassport_series(rs.getString("passport_series"));
+		client.setPassport_number(rs.getString("passport_number"));
+		client.setPassport_authority(rs.getString("passport_authority"));
+		client.setPassport_issue_date(rs.getDate("passport_issue_date"));
+		client.setPassport_identification_number(rs.getString("passport_identification_number"));
+		client.setBirthday_place(rs.getString("birthday_place"));
+		client.setActual_residential_city_id(rs.getInt("actual_residential_city_id"));
+		client.setActual_address(rs.getString("actual_address"));
+		client.setHome_phone_number(rs.getString("home_phone_number"));
+		client.setCellular_phone_number(rs.getString("cellular_phone_number"));
+		client.setEmail(rs.getString("email"));
+		client.setPlace_of_work(rs.getString("place_of_work"));
+		client.setJob_title(rs.getString("job_title"));
+		client.setResirential_city_id(rs.getInt("resirential_city_id"));
+		client.setResidential_address(rs.getString("residential_address"));
+		client.setMartial_status_id(rs.getInt("martial_status_id"));
+		client.setNationality_id(rs.getInt("nationality_id"));
+		client.setDisability_id(rs.getInt("disability_id"));
+		client.setIs_retired(rs.getBoolean("is_retired"));
+		client.setMonthly_income(rs.getDouble("monthly_income"));
+		client.setIs_reservist(rs.getBoolean("is_reservist"));
+		return client;
+	}
 
     public Client getById(int clientId) {
     	Client client = new Client();
@@ -74,15 +99,8 @@ public class ClientDao {
             preparedStatement.setInt(1, clientId);
             
             ResultSet rs = preparedStatement.executeQuery();
-
             if (rs.next()) {
-                client.setId(rs.getInt("id"));
-                client.setFirst_name(rs.getString("first_name"));
-                client.setLast_name(rs.getString("last_name"));
-                client.setMiddle_name(rs.getString("middle_name"));
-                client.setBirthday_date(rs.getDate("birthday_date"));
-                
-                // TODO: add the rest fields
+            	client = clientFromResultSet(rs);
             }
         } catch (SQLException e) {
             e.printStackTrace();

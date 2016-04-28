@@ -20,8 +20,8 @@ import com.model.Client;
 public class ClientsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private static String CLIETN = "/client.jsp";
-	private static String CLIETNS = "/clients.jsp";
+	private static String INSERT_OR_EDIT = "/client.jsp";
+	private static String CLIENTS = "/clients.jsp";
 	
 	
 	private ClientDao dao;
@@ -42,23 +42,28 @@ public class ClientsController extends HttpServlet {
 		String action = request.getParameter("action");
 		
 		if (action.equalsIgnoreCase("clients")) {
-			forward = CLIETNS;
+			forward = CLIENTS;
 			List<Client> clients = dao.getClients();
 			request.setAttribute("clients", clients);
 		} if (action.equalsIgnoreCase("insert")) {
-			forward = CLIETN;
-//			request.setAttribute("users", dao.getAllUsers());
+			forward = INSERT_OR_EDIT;
+		} if (action.equalsIgnoreCase("edit")) {
+			forward = INSERT_OR_EDIT;
+			int clientId = Integer.parseInt(request.getParameter("clientId"));
+			Client client = dao.getById(clientId);
+			request.setAttribute("client", client);
+		} else if (action.equalsIgnoreCase("delete")) {
+			forward = CLIENTS;
+			int clientId = Integer.parseInt(request.getParameter("clientId"));
+			dao.deleteClient(clientId);
+			List<Client> clients = dao.getClients();
+			request.setAttribute("clients", clients);
 		} else {
-			forward = CLIETNS;
+			forward = CLIENTS;
 		}
 		
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
-		
-//		response.setContentType("text/html");
-//        PrintWriter printWriter = response.getWriter();
-//        printWriter.println("<h1>Hello World!</h1>");
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

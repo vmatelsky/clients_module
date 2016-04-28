@@ -7,10 +7,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<link type="text/css" href="css/tables.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery-1.7.1.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+
 <title>Clients</title>
 </head>
 <body>
-	<table border=1>
+<div class="CSSTableGenerator" >
+	<table>
 		<thead>
 			<tr>
 				<th>Id</th>
@@ -18,6 +23,15 @@
 				<th>Last Name</th>
 				<th>Middle Name</th>
 				<th>Birthday date</th>
+				<th>Gender</th>
+				<th>Passport series</th>
+				<th>Passport number</th>
+				<th>Passport authority</th>
+				
+				<th>Passport issue date</th>
+				<th>Passport No</th>
+				<th>Birthday place</th>
+				
 				<th>Email</th>
 				<th colspan=2>Action</th>
 			</tr>
@@ -30,15 +44,38 @@
 					<td><c:out value="${client.last_name}" /></td>
 					<td><c:out value="${client.middle_name}" /></td>
 					<td><fmt:formatDate pattern="yyyy-MMM-dd" value="${client.birthday_date}" /></td>
+					<td><c:out value="${client.gender}" /></td>
+					<td><c:out value="${client.passport_series}" /></td>
+					<td><c:out value="${client.passport_number}" /></td>
+					<td><c:out value="${client.passport_authority}" /></td>
+					<td><fmt:formatDate pattern="yyyy-MMM-dd" value="${client.passport_issue_date}" /></td>
+					<td><c:out value="${client.passport_identification_number}" /></td>
+					<td><c:out value="${client.birthday_place}" /></td>
+					<td><c:out value="${client.actual_residential_city_id}" /></td>
+					<td><c:out value="${client.actual_address}" /></td>
+					<td><c:out value="${client.home_phone_number}" /></td>
+					<td><c:out value="${client.cellular_phone_number}" /></td>
 					<td><c:out value="${client.email}" /></td>
+					<td><c:out value="${client.place_of_work}" /></td>
+					<td><c:out value="${client.job_title}" /></td>
+					<td><c:out value="${client.resirential_city_id}" /></td>
+					<td><c:out value="${client.residential_address}" /></td>
+					<td><c:out value="${client.martial_status_id}" /></td>
+					<td><c:out value="${client.nationality_id}" /></td>
+					<td><c:out value="${client.disability_id}" /></td>
+					<td><c:out value="${client.is_retired}" /></td>
+					<td><c:out value="${client.monthly_income}" /></td>
+					<td><c:out value="${client.is_reservist}" /></td>
+					
 					<td><a
-						href="ClientsController?action=edit&userId="<c:out value="${client.id}"/>">Update</a></td>
+						href="ClientsController?action=edit&clientId=<c:out value="${client.id}" />">Update</a></td>
 					<td><a
-						href="ClientsController?action=delete&userId="<c:out value="${client.id}"/>">Delete</a></td>
+						href="ClientsController?action=delete&clientId=<c:out value="${client.id}" />">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	</div>
 	<p>
 		<a href="ClientsController?action=insert">Add User</a>
 	</p>
