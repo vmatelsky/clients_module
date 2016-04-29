@@ -22,8 +22,15 @@
 <body>
     <script>
         $(function() {
-            $('input[name=birthday_date]').datepicker();
-            $('input[name=passport_issue_date]').datepicker();
+            $('input[name=birthday_date]').datepicker({
+            	  changeMonth: true,
+            	  changeYear: true,
+            });
+            $('input[name=passport_issue_date]').datepicker({
+          	  changeMonth: true,
+        	  changeYear: true,
+        	});
+            
             $('input[name=birthday_date]').mask("99/99/9999");
             $('input[name=passport_issue_date]').mask("99/99/9999");
             
