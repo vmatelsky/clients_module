@@ -30,11 +30,9 @@ public class ClientsController extends HttpServlet {
 	private static String ACTION_INSERT = "insert";
 	private static String ACTION_DELETE = "delete";
 	
-	
 	private static String INSERT_OR_EDIT = "/client.jsp";
 	private static String VIEW = "/view_client.jsp";
 	private static String CLIENTS = "/clients.jsp";
-	
 	
 	private ClientDao dao;
        
@@ -91,7 +89,6 @@ public class ClientsController extends HttpServlet {
 			request.setAttribute("nationalities", dao.getNationalities());
 			request.setAttribute("marital_status", dao.getMartialStatusList());
 			request.setAttribute("disabilities", dao.getDisabilities());
-			
 		} else {
 			forward = CLIENTS;
 		}
@@ -115,7 +112,7 @@ public class ClientsController extends HttpServlet {
 			dao.updateClient(client);
 		}
 		
-		doGet(request, response);
+		response.sendRedirect("#");
 	}
 	
 	private Client clientFromRequest(HttpServletRequest request) {
