@@ -1,6 +1,7 @@
 package com.module.clients;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -119,6 +120,12 @@ public class ClientsController extends HttpServlet {
 	
 	private Client clientFromRequest(HttpServletRequest request) {
 		Client client = new Client();
+		
+		try {
+			request.setCharacterEncoding("cp1251");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		
 		client.setFirst_name(request.getParameter("first_name"));
 		client.setLast_name(request.getParameter("last_name"));

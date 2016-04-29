@@ -166,7 +166,7 @@
     		</tr>
     		
     		<tr>
-    			<td>Residential address : </td>
+    			<td>Monthly income : </td>
     			<td>
     				<c:out value="${client.monthly_income}" />
     			</td>
