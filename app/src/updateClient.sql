@@ -23,6 +23,6 @@ SET
 	`nationality_id` = ?, 
 	`disability_id` = ?, 
 	`is_retired` = ?, 
-	`monthly_income` = ?, 
+	`monthly_income` = ?
 WHERE 
 	id = ?

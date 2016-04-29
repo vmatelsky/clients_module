@@ -62,7 +62,7 @@ public class ClientDao {
 
 			prepareStatementForUser(client, preparedStatement);
 			
-			preparedStatement.setInt(25, client.getId());
+			preparedStatement.setInt(24, client.getId());
             
             preparedStatement.executeUpdate();
         } catch (SQLException | IOException e) {
