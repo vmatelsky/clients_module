@@ -52,7 +52,8 @@
 		</tbody>
 	</table>
 	
-	<span><a href="ClientsController?action=insert">Добавить клиента</a></span>
+	
+	<span><a href="ClientsController?action=insert" style="font-size: 1.2em">Добавить клиента</a></span>
 	
 	</div>
 	</div>
