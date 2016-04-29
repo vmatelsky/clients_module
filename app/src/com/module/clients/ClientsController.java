@@ -114,9 +114,7 @@ public class ClientsController extends HttpServlet {
 			dao.updateClient(client);
 		}
 		
-		RequestDispatcher view = request.getRequestDispatcher(CLIENTS);
-		request.setAttribute("cities", dao.getClients());
-		view.forward(request, response);
+		doGet(request, response);
 	}
 	
 	private Client clientFromRequest(HttpServletRequest request) {
