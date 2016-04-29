@@ -53,13 +53,8 @@ public class ClientsController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String forward = "";
 		String action = request.getParameter("action");
-		
-		if (ACTION_CLIENTS.equalsIgnoreCase(action)) {
-			forward = CLIENTS;
-			List<Client> clients = dao.getClients();
-			request.setAttribute("clients", clients);
 			
-		} else if (ACTION_INSERT.equalsIgnoreCase(action)) {
+		if (ACTION_INSERT.equalsIgnoreCase(action)) {
 			forward = INSERT_OR_EDIT;
 			request.setAttribute("cities", dao.getCities());
 			request.setAttribute("nationalities", dao.getNationalities());
@@ -95,6 +90,8 @@ public class ClientsController extends HttpServlet {
 			request.setAttribute("marital_status", dao.getMartialStatusList());
 			request.setAttribute("disabilities", dao.getDisabilities());
 		} else {
+			List<Client> clients = dao.getClients();
+			request.setAttribute("clients", clients);
 			forward = CLIENTS;
 		}
 		
@@ -151,7 +148,9 @@ public class ClientsController extends HttpServlet {
 		client.setMartial_status_id(Integer.parseInt(request.getParameter("martial_status_id")));
 		client.setNationality_id(Integer.parseInt(request.getParameter("nationality_id")));
 		client.setDisability_id(Integer.parseInt(request.getParameter("disability_id")));
-		client.setIs_retired(Boolean.parseBoolean(request.getParameter("is_retired")));
+		
+		String isRetired = request.getParameter("is_retired");
+		client.setIs_retired(isRetired != null && isRetired.equals("on"));	
 		
 		String monthlyIncome = request.getParameter("monthly_income").trim();
 		if (monthlyIncome != null && !monthlyIncome.isEmpty()) {
