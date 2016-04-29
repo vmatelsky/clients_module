@@ -11,171 +11,156 @@
 <link type="text/css" href="css/tables.css" rel="stylesheet" />
 <script type="text/javascript" src="js/jquery-1.7.1.js"></script>
 <script type="text/javascript" src="js/jquery-ui.js"></script>
-<title>¬³lient <c:out value="${client.id}" /></title>
+<title>¬¬¬Ý¬Ú¬Ö¬ß¬ä <c:out value="${client.id}" /></title>
 </head>
 <body>
     
     <div >
     	<table>
     		<tr>
-    			<td>Client ID : </td>
+    			<td>ID : </td>
     			<td><c:out value="${client.id}" /></td>
     		</tr>
     		<tr>
-    			<td>First Name : </td>
-    			<td><c:out value="${client.first_name}" /></td>
-    		</tr>
-    		<tr>
-    			<td>Middle Name : </td>
-    			<td>
-    				<c:out value="${client.middle_name}" /> 
-    			</td>
-    		</tr>
-    		<tr>
-    			<td>Last Name : </td>
+    			<td>¬¶¬Ñ¬Þ¬Ú¬Ý¬Ú¬ñ : </td>
     			<td>
     				<c:out value="${client.last_name}" /> 
             	</td>
     		</tr>
     		<tr>
-    			<td>Birthday date : </td>
+    			<td>¬ª¬Þ¬ñ : </td>
+    			<td><c:out value="${client.first_name}" /></td>
+    		</tr>
+    		<tr>
+    			<td>¬°¬ä¬é¬Ö¬ã¬ä¬Ó¬à : </td>
+    			<td>
+    				<c:out value="${client.middle_name}" /> 
+    			</td>
+    		</tr>
+    		
+    		<tr>
+    			<td>¬¥¬Ñ¬ä¬Ñ ¬â¬à¬Ø¬Õ¬Ö¬ß¬Ú¬ñ : </td>
     			<td>
     				<fmt:formatDate pattern="MM/dd/yyyy" value="${client.birthday_date}" /> 
     			</td>
     		</tr>
     		<tr>
-    			<td>Gender : </td>
-    			<td><c:out value="${client.gender}" /></td>
-    		</tr>
-    		<tr>
-    			<td>Passport series : </td>
+    			<td>¬³¬Ö¬â¬Ú¬ñ ¬á¬Ñ¬ã¬á¬à¬â¬ä¬Ñ : </td>
     			<td>
     				<c:out value="${client.passport_series}" />  
     			</td>
     		</tr>
     		<tr>
-    			<td>Passport number : </td>
+    			<td>¬¯¬à¬Þ¬Ö¬â ¬á¬Ñ¬ã¬á¬à¬â¬ä¬Ñ : </td>
     			<td>
     				<c:out value="${client.passport_number}" />
     			</td>
     		</tr>
     		<tr>
-    			<td>Passport authority : </td>
+    			<td>¬¬¬Ö¬Þ ¬Ó¬í¬Õ¬Ñ¬ß : </td>
     			<td>
     				<c:out value="${client.passport_authority}" />
     			</td>
     		</tr>
     		
     		<tr>
-    			<td>Passport issue date : </td>
+    			<td>¬¥¬Ñ¬ä¬Ñ ¬Ó¬í¬Õ¬Ñ¬é¬Ú : </td>
     			<td>
     				<fmt:formatDate pattern="MM/dd/yyyy" value="${client.passport_issue_date}" />
     			</td>
     		</tr>
     		<tr>
-    			<td>Passport No : </td>
+    			<td>¬ª¬Õ¬Ö¬ß¬ä¬Ú¬æ¬Ú¬Ü¬Ñ¬è¬Ú¬à¬ß¬ß¬í¬Û ¬ß¬à¬Þ¬Ö¬â : </td>
     			<td>
     				<c:out value="${client.passport_identification_number}" />
     			</td>
     		</tr>
     		<tr>
-    			<td>Birthday place : </td>
+    			<td>¬®¬Ö¬ã¬ä¬à ¬â¬à¬Ø¬Õ¬Ö¬ß¬Ú¬ñ : </td>
     			<td>
     				<c:out value="${client.birthday_place}" />
     			</td>
     		</tr>
     		<tr>
-    			<td>Actual residential city : </td>
+    			<td>¬¤¬à¬â¬à¬Õ ¬æ¬Ñ¬Ü¬ä. ¬á¬â¬à¬Ø¬Ú¬Ó¬Ñ¬ß¬Ú¬ñ : </td>
     			<td><c:out value="${client.actual_residential_city}" /></td>
     		</tr>
     		
     		<tr>
-    			<td>Actual address : </td>
+    			<td>¬¡¬Õ¬â¬Ö¬ã ¬æ¬Ñ¬Ü¬ä. ¬á¬â¬à¬Ø¬Ú¬Ó¬Ñ¬ß¬Ú¬ñ : </td>
     			<td>
     				<c:out value="${client.actual_address}" />
     			</td>
     		</tr>
     		
     		<tr>
-    			<td>Home phone number : </td>
+    			<td>¬´¬Ö¬Ý¬Ö¬æ¬à¬ß ¬Õ¬à¬Þ : </td>
     			<td>
     				<c:out value="${client.home_phone_number}" />
     			</td>
     		</tr>
     		
     		<tr>
-    			<td>Cellular phone number : </td>
+    			<td>¬´¬Ö¬Ý¬Ö¬æ¬à¬ß ¬Þ¬à¬Ò : </td>
     			<td>
     				<c:out value="${client.cellular_phone_number}" />
     			</td>
     		</tr>
     		
     		<tr>
-    			<td>Email : </td>
+    			<td>E-mail : </td>
     			<td>
     				<c:out value="${client.email}" />
     			</td>
     		</tr>
     		
     		<tr>
-    			<td>Place of work : </td>
+    			<td>¬®¬Ö¬ã¬ä¬à ¬â¬Ñ¬Ò¬à¬ä¬í : </td>
     			<td>
     				<c:out value="${client.place_of_work}" />
     			</td>
     		</tr>
     		
     		<tr>
-    			<td>Job title : </td>
+    			<td>¬¥¬à¬Ý¬Ø¬ß¬à¬ã¬ä¬î : </td>
     			<td>
     				<c:out value="${client.job_title}" />
     			</td>
     		</tr>
     		
     		<tr>
-    			<td>Residential city : </td>
-    			<td><c:out value="${client.resirential_city}" /></td> 
-    		</tr>
-    		
-    		<tr>
-    			<td>Residential address : </td>
+    			<td>¬¤¬à¬â¬à¬Õ ¬á¬â¬à¬á¬Ú¬ã¬Ü¬Ú : </td>
     			<td>
     				<c:out value="${client.residential_address}" />
     			</td>
     		</tr>
     		
     		<tr>
-    			<td>Martial status : </td>
+    			<td>¬³¬Ö¬Þ¬Ö¬Û¬ß¬í¬Û ¬ã¬ä¬Ñ¬ä¬å¬ã : </td>
     			<td><c:out value="${client.martial_status}" /></td>
     		</tr>
     		
     		<tr>
-    			<td>Nationality : </td>
+    			<td>¬¯¬Ñ¬è¬Ú¬à¬ß¬Ñ¬Ý¬î¬ß¬à¬ã¬ä¬î : </td>
     			<td><c:out value="${client.nationality}" /></td>
     		</tr>
     		
     		<tr>
-    			<td>Disabilities : </td>
+    			<td>¬ª¬ß¬Ó¬Ñ¬Ý¬Ú¬Õ¬ß¬à¬ã¬ä¬î : </td>
     			<td><c:out value="${client.disability}" /></td>
     		</tr>
     		
     		<tr>
-    			<td>Retired : </td>
+    			<td>¬±¬Ö¬ß¬ã¬Ú¬à¬ß¬Ö¬â : </td>
     			<td>
     				<input disabled type="checkbox" name="is_retired" <c:if test="${client.is_retired}">checked</c:if> /> <br />  
     			</td>
     		</tr>
     		
     		<tr>
-    			<td>Monthly income : </td>
+    			<td>¬¦¬Ø¬Ö¬Þ¬Ö¬ã¬ñ¬é¬ß¬í¬Û ¬Õ¬à¬ç¬à¬Õ : </td>
     			<td>
     				<c:out value="${client.monthly_income}" />
-    			</td>
-    		</tr>
-    		
-    		<tr>
-    			<td>Reservist : </td>
-    			<td>
-    				<input disabled type="checkbox" name="is_reservist" <c:if test="${client.is_reservist}">checked</c:if> /> <br />  
     			</td>
     		</tr>
     		

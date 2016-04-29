@@ -1,5 +1,6 @@
 package com.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Client {
@@ -8,7 +9,6 @@ public class Client {
 	private String last_name;
 	private String middle_name;
 	private Date birthday_date;
-	private String gender;
 	private String passport_series;
 	private String passport_number;
 	private String passport_authority;
@@ -22,17 +22,14 @@ public class Client {
 	private String email;
 	private String place_of_work;
 	private String job_title;
-	private int resirential_city_id;
 	private String residential_address;
 	private int martial_status_id;
 	private int nationality_id;
 	private int disability_id;
 	private boolean is_retired;
-	private double monthly_income;
-	private boolean is_reservist;
+	private BigDecimal monthly_income;
 
 	private String actual_residential_city;
-	private String resirential_city;
 	private String martial_status;
 	private String nationality;
 	private String disability;
@@ -67,14 +64,6 @@ public class Client {
 
 	public void setBirthday_date(java.util.Date birthday_date){
 		this.birthday_date=birthday_date;
-	}
-
-	public String getGender(){
-		return gender;
-	}
-
-	public void setGender(String gender){
-		this.gender=gender;
 	}
 
 	public String getPassport_series(){
@@ -181,14 +170,6 @@ public class Client {
 		this.job_title=job_title;
 	}
 
-	public int getResirential_city_id(){
-		return resirential_city_id;
-	}
-
-	public void setResirential_city_id(int resirential_city_id){
-		this.resirential_city_id=resirential_city_id;
-	}
-
 	public String getResidential_address(){
 		return residential_address;
 	}
@@ -229,20 +210,12 @@ public class Client {
 		this.is_retired=is_retired;
 	}
 
-	public double getMonthly_income(){
+	public BigDecimal getMonthly_income(){
 		return monthly_income;
 	}
 
-	public void setMonthly_income(double monthly_income){
+	public void setMonthly_income(BigDecimal monthly_income){
 		this.monthly_income=monthly_income;
-	}
-
-	public boolean getIs_reservist(){
-		return is_reservist;
-	}
-
-	public void setIs_reservist(boolean is_reservist){
-		this.is_reservist=is_reservist;
 	}
 
 	public int getId() {
@@ -259,14 +232,6 @@ public class Client {
 
 	public void setActual_residential_city(String actual_residential_city) {
 		this.actual_residential_city = actual_residential_city;
-	}
-
-	public String getResirential_city() {
-		return resirential_city;
-	}
-
-	public void setResirential_city(String resirential_city) {
-		this.resirential_city = resirential_city;
 	}
 
 	public String getMartial_status() {

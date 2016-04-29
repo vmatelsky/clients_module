@@ -17,7 +17,7 @@
 
 <script type="text/javascript" src="js/jquery.maskedinput.js"></script>
 
-<title>Add new client</title>
+<title>${mode == "insert" ? 'Добавить клиента' : 'Редактировать клиента'}</title>
 </head>
 <body>
     <script>
@@ -27,11 +27,10 @@
             $('input[name=birthday_date]').mask("99/99/9999");
             $('input[name=passport_issue_date]').mask("99/99/9999");
             
-            $('input[name=passport_number]').mask("aa9999999",{placeholder:"LLDDDDDDD"});
+            $('input[name=passport_number]').mask("9999999",{placeholder:"DDDDDDD"});
             
             $("input[name=home_phone_number]").mask("+999 99 9999999");
             $("input[name=cellular_phone_number]").mask("+999 99 9999999");
-            
             
             $("input[name=monthly_income]").mask("+999 99 9999999");
         });
@@ -42,87 +41,75 @@
     <div >
     	<table>
     		<tr>
-    			<td>Client ID : </td>
+    			<td>ID : </td>
     			<td>
     				<input type="text" readonly="readonly" name="id" value="<c:out value="${client.id}" />" /> <br />
     			</td>
     		</tr>
     		<tr>
-    			<td>First Name : </td>
-    			<td>
-    				<input required type="text" name="first_name" value="<c:out value="${client.first_name}" />" /> <br /> 
-    			</td>
-    		</tr>
-    		<tr>
-    			<td>Middle Name : </td>
-    			<td>
-    				<input required type="text" name="middle_name" value="<c:out value="${client.middle_name}" />" /> <br /> 
-    			</td>
-    		</tr>
-    		<tr>
-    			<td>Last Name : </td>
+    			<td>Фамилия : </td>
     			<td>
     				<input required type="text" name="last_name" value="<c:out value="${client.last_name}" />" /> <br /> 
             	</td>
     		</tr>
     		<tr>
-    			<td>Birthday date : </td>
+    			<td>Имя : </td>
+    			<td>
+    				<input required type="text" name="first_name" value="<c:out value="${client.first_name}" />" /> <br /> 
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>Отчество : </td>
+    			<td>
+    				<input required type="text" name="middle_name" value="<c:out value="${client.middle_name}" />" /> <br /> 
+    			</td>
+    		</tr>
+    		
+    		<tr>
+    			<td>Дата рождения : </td>
     			<td>
     				<input required type="text" id="birthday_date" name="birthday_date" value="<fmt:formatDate pattern="MM/dd/yyyy" value="${client.birthday_date}" />" /> <br /> 
     			</td>
     		</tr>
     		<tr>
-    			<td>Gender : </td>
-    			<td>
-    			<div>
-    				<label for="male">Male</label>
-  					<input type="radio" name="gender" id="male" value="male" ${'male' == client.gender ? 'checked' : ''}><br>
-  					<label for="female">Female</label>
-  					<input type="radio" name="gender" id="female" value="female" ${'female' == client.gender ? 'checked' : ''}><br>
-  					<label for="other">Other</label>
-  					<input type="radio" name="gender" id="other" value="other" ${(('male' != client.gender) && ('female' != client.gender)) ? 'checked' : ''}  ><br><br>
-    			</div>
-    			</td>
-    		</tr>
-    		<tr>
-    			<td>Passport series : </td>
+    			<td>Серия паспорта : </td>
     			<td>
     				<input required type="text" name="passport_series" value="<c:out value="${client.passport_series}" />" /> <br />  
     			</td>
     		</tr>
     		<tr>
-    			<td>Passport number : </td>
+    			<td>Номер паспорта : </td>
     			<td>
     				<input required type="text" name="passport_number" value="<c:out value="${client.passport_number}" />" /> <br />  
     			</td>
     		</tr>
     		<tr>
-    			<td>Passport authority : </td>
+    			<td>Кем выдан : </td>
     			<td>
     				<input required type="text" name="passport_authority" value="<c:out value="${client.passport_authority}" />" /> <br />  
     			</td>
     		</tr>
     		
     		<tr>
-    			<td>Passport issue date : </td>
+    			<td>Дата выдачи : </td>
     			<td>
     				<input required type="text" name="passport_issue_date" value="<fmt:formatDate pattern="MM/dd/yyyy" value="${client.passport_issue_date}" />" /> <br />  
     			</td>
     		</tr>
     		<tr>
-    			<td>Passport No : </td>
+    			<td>Идентификационный номер : </td>
     			<td>
     				<input required type="text" name="passport_identification_number" value="<c:out value="${client.passport_identification_number}" />" /> <br />  
     			</td>
     		</tr>
     		<tr>
-    			<td>Birthday place : </td>
+    			<td>Место рождения : </td>
     			<td>
     				<input required type="text" name="birthday_place" value="<c:out value="${client.birthday_place}" />" /> <br />  
     			</td>
     		</tr>
     		<tr>
-    			<td>Actual residential city : </td>
+    			<td>Город фактического проживания : </td>
     			<td>
     			<select name="actual_residential_city_id">
     				<c:forEach items="${cities}" var="city">
@@ -133,67 +120,56 @@
     		</tr>
     		
     		<tr>
-    			<td>Actual address : </td>
+    			<td>Адрес фактического проживания : </td>
     			<td>
     				<input required type="text" name="actual_address" value="<c:out value="${client.actual_address}" />" /> <br />  
     			</td>
     		</tr>
     		
     		<tr>
-    			<td>Home phone number : </td>
+    			<td>Телефон дом : </td>
     			<td>
     				<input type="text" name="home_phone_number" value="<c:out value="${client.home_phone_number}" />" /> <br />  
     			</td>
     		</tr>
     		
     		<tr>
-    			<td>Cellular phone number : </td>
+    			<td>Телефон моб : </td>
     			<td>
     				<input type="text" name="cellular_phone_number" value="<c:out value="${client.cellular_phone_number}" />" /> <br />  
     			</td>
     		</tr>
     		
     		<tr>
-    			<td>Email : </td>
+    			<td>E-mail : </td>
     			<td>
     				<input type="text" type="email" name="email" value="<c:out value="${client.email}" />" /> <br />  
     			</td>
     		</tr>
     		
     		<tr>
-    			<td>Place of work : </td>
+    			<td>Место работы : </td>
     			<td>
     				<input type="text" name="place_of_work" value="<c:out value="${client.place_of_work}" />" /> <br />  
     			</td>
     		</tr>
     		
     		<tr>
-    			<td>Job title : </td>
+    			<td>Должность : </td>
     			<td>
     				<input type="text" name="job_title" value="<c:out value="${client.job_title}" />" /> <br />  
     			</td>
     		</tr>
     		
     		<tr>
-    			<td>Residential city : </td>
-    			<td>
-    			<select name="resirential_city_id">
-    				<c:forEach items="${cities}" var="city">
-    					<option value="${city.id}" ${city.id == client.resirential_city_id ? 'selected="selected"' : ''} > <c:out value="${city.name}" /> </option>
-    				</c:forEach>
-				</select>  
-    			</td>
-    		</tr>
-    		
-    		<tr>
-    			<td>Residential address : </td>
+    			<td>Город прописки : </td>
     			<td>
     				<input required type="text" name="residential_address" value="<c:out value="${client.residential_address}" />" /> <br />  
     			</td>
     		</tr>
     		
     		<tr>
-    			<td>Martial status : </td>
+    			<td>Семейное положение : </td>
     			<td>
     			<select name="martial_status_id">
     				<c:forEach items="${marital_status}" var="item">
@@ -204,7 +180,7 @@
     		</tr>
     		
     		<tr>
-    			<td>Nationality : </td>
+    			<td>Гражданство : </td>
     			<td>
     			<select name="nationality_id">
     				<c:forEach items="${nationalities}" var="item">
@@ -215,7 +191,7 @@
     		</tr>
     		
     		<tr>
-    			<td>Disabilities : </td>
+    			<td>Инвалидность : </td>
     			<td>
     			<select name="disability_id">
     				<c:forEach items="${disabilities}" var="item">
@@ -226,23 +202,16 @@
     		</tr>
     		
     		<tr>
-    			<td>Retired : </td>
+    			<td>Пенсионер : </td>
     			<td>
     				<input type="checkbox" name="is_retired" <c:if test="${client.is_retired}">checked</c:if> /> <br />  
     			</td>
     		</tr>
     		
     		<tr>
-    			<td>Monthly income : </td>
+    			<td>Ежемесячный доход : </td>
     			<td>
-    				<input required type="text" name="monthly_income" value="<c:out value="${client.monthly_income}" />" /> <br />  
-    			</td>
-    		</tr>
-    		
-    		<tr>
-    			<td>Reservist : </td>
-    			<td>
-    				<input type="checkbox" name="is_reservist" <c:if test="${client.is_reservist}">checked</c:if> /> <br />  
+    				<input type="text" name="monthly_income" value="<c:out value="${client.monthly_income}" />" /> <br />  
     			</td>
     		</tr>
     		

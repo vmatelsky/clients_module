@@ -11,20 +11,20 @@
 <script type="text/javascript" src="js/jquery-1.7.1.js"></script>
 <script type="text/javascript" src="js/jquery-ui.js"></script>
 
-<title>Clients</title>
+<title>Клиенты</title>
 </head>
 <body>
 <div>
 	<table>
 		<thead>
 			<tr>
-				<th>Id</th>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Birthday date</th>
+				<th>ID</th>
+				<th>Имя</th>
+				<th>Фамилия</th>
+				<th>Дата рождения</th>
 								
-				<th>Email</th>
-				<th colspan=3>Action</th>
+				<th>E-mail</th>
+				<th colspan=3>Действия</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -60,18 +60,18 @@
 					<td><c:out value="${client.is_reservist}" /></td> --%>
 					
 					<td><a
-						href="ClientsController?action=view&clientId=<c:out value="${client.id}" />">View</a></td>
+						href="ClientsController?action=view&clientId=<c:out value="${client.id}" />">Просмотреть</a></td>
 					<td><a
-						href="ClientsController?action=edit&clientId=<c:out value="${client.id}" />">Update</a></td>
+						href="ClientsController?action=edit&clientId=<c:out value="${client.id}" />">Обновить</a></td>
 					<td><a
-						href="ClientsController?action=delete&clientId=<c:out value="${client.id}" />">Delete</a></td>
+						href="ClientsController?action=delete&clientId=<c:out value="${client.id}" />">Удалить</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 	</div>
 	<p>
-		<a href="ClientsController?action=insert">Add User</a>
+		<a href="ClientsController?action=insert">Добавить клиента</a>
 	</p>
 </body>
 </html>

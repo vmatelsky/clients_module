@@ -2,6 +2,9 @@ package com.module.clients;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -62,6 +65,7 @@ public class ClientsController extends HttpServlet {
 			request.setAttribute("nationalities", dao.getNationalities());
 			request.setAttribute("marital_status", dao.getMartialStatusList());
 			request.setAttribute("disabilities", dao.getDisabilities());
+			request.setAttribute("mode", "insert");
 			
 		} else if (ACTION_EDIT.equalsIgnoreCase(action)) {
 			forward = INSERT_OR_EDIT;
@@ -72,6 +76,7 @@ public class ClientsController extends HttpServlet {
 			request.setAttribute("nationalities", dao.getNationalities());
 			request.setAttribute("marital_status", dao.getMartialStatusList());
 			request.setAttribute("disabilities", dao.getDisabilities());
+			request.setAttribute("mode", "edit");
 			
 		} else if (ACTION_DELETE.equalsIgnoreCase(action)) {
 			forward = CLIENTS;
@@ -129,7 +134,6 @@ public class ClientsController extends HttpServlet {
 		client.setMiddle_name(request.getParameter("middle_name"));
 		client.setBirthday_date(dateFromRequest(request, "birthday_date"));
 		
-		client.setGender(request.getParameter("gender"));
 		client.setPassport_series(request.getParameter("passport_series"));
 		client.setPassport_number(request.getParameter("passport_number"));
 		client.setPassport_authority(request.getParameter("passport_authority"));
@@ -143,22 +147,39 @@ public class ClientsController extends HttpServlet {
 		client.setEmail(request.getParameter("email"));
 		client.setPlace_of_work(request.getParameter("place_of_work"));
 		client.setJob_title(request.getParameter("job_title"));
-		client.setResirential_city_id(Integer.parseInt(request.getParameter("resirential_city_id")));
 		client.setResidential_address(request.getParameter("residential_address"));
 		client.setMartial_status_id(Integer.parseInt(request.getParameter("martial_status_id")));
 		client.setNationality_id(Integer.parseInt(request.getParameter("nationality_id")));
 		client.setDisability_id(Integer.parseInt(request.getParameter("disability_id")));
 		client.setIs_retired(Boolean.parseBoolean(request.getParameter("is_retired")));
-		client.setMonthly_income(Double.parseDouble(request.getParameter("monthly_income")));
-		client.setIs_reservist(Boolean.parseBoolean(request.getParameter("is_reservist")));
+		
+		String monthlyIncome = request.getParameter("monthly_income").trim();
+		if (monthlyIncome != null && !monthlyIncome.isEmpty()) {
+			try {
+				BigDecimal bigDecimal = stringToBigDecimal(monthlyIncome);
+				client.setMonthly_income(bigDecimal);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
 		
 		client.setActual_residential_city(request.getParameter("actual_city"));
-		client.setResirential_city(request.getParameter("residential_city"));
 		client.setMartial_status(request.getParameter("martial_status"));
 		client.setNationality(request.getParameter("nationality"));
 		client.setDisability(request.getParameter("disability_name"));
 		
 		return client;
+	}
+
+	private BigDecimal stringToBigDecimal(String string) throws ParseException {
+		DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+		symbols.setGroupingSeparator(',');
+		symbols.setDecimalSeparator('.');
+		String pattern = "#,##0.0#";
+		DecimalFormat decimalFormat = new DecimalFormat(pattern, symbols);
+		decimalFormat.setParseBigDecimal(true);
+		BigDecimal bigDecimal = (BigDecimal) decimalFormat.parse(string);
+		return bigDecimal;
 	}
 	
 	private Date dateFromRequest(HttpServletRequest request, String parameterName) {

@@ -62,7 +62,7 @@ public class ClientDao {
 
 			prepareStatementForUser(client, preparedStatement);
 			
-			preparedStatement.setInt(27, client.getId());
+			preparedStatement.setInt(25, client.getId());
             
             preparedStatement.executeUpdate();
         } catch (SQLException | IOException e) {
@@ -75,28 +75,25 @@ public class ClientDao {
 		preparedStatement.setString(2, client.getLast_name());
 		preparedStatement.setString(3, client.getMiddle_name());
 		preparedStatement.setDate(4, new java.sql.Date(client.getBirthday_date().getTime()));
-		preparedStatement.setString(5, client.getGender());
-		preparedStatement.setString(6, client.getPassport_series());
-		preparedStatement.setString(7, client.getPassport_number());
-		preparedStatement.setString(8, client.getPassport_authority());
-		preparedStatement.setDate(9, new java.sql.Date(client.getPassport_issue_date().getTime()));
-		preparedStatement.setString(10, client.getPassport_identification_number());
-		preparedStatement.setString(11, client.getBirthday_place());
-		preparedStatement.setInt(12, client.getActual_residential_city_id());
-		preparedStatement.setString(13, client.getActual_address());
-		preparedStatement.setString(14, client.getHome_phone_number());
-		preparedStatement.setString(15, client.getCellular_phone_number());
-		preparedStatement.setString(16, client.getEmail());
-		preparedStatement.setString(17, client.getPlace_of_work());
-		preparedStatement.setString(18, client.getJob_title());
-		preparedStatement.setInt(19, client.getResirential_city_id());
-		preparedStatement.setString(20, client.getResidential_address());
-		preparedStatement.setInt(21, client.getMartial_status_id());
-		preparedStatement.setInt(22, client.getNationality_id());
-		preparedStatement.setInt(23, client.getDisability_id());
-		preparedStatement.setBoolean(24, client.getIs_retired());
-		preparedStatement.setDouble(25, client.getMonthly_income());
-		preparedStatement.setBoolean(26, client.getIs_reservist());
+		preparedStatement.setString(5, client.getPassport_series());
+		preparedStatement.setString(6, client.getPassport_number());
+		preparedStatement.setString(7, client.getPassport_authority());
+		preparedStatement.setDate(8, new java.sql.Date(client.getPassport_issue_date().getTime()));
+		preparedStatement.setString(9, client.getPassport_identification_number());
+		preparedStatement.setString(10, client.getBirthday_place());
+		preparedStatement.setInt(11, client.getActual_residential_city_id());
+		preparedStatement.setString(12, client.getActual_address());
+		preparedStatement.setString(13, client.getHome_phone_number());
+		preparedStatement.setString(14, client.getCellular_phone_number());
+		preparedStatement.setString(15, client.getEmail());
+		preparedStatement.setString(16, client.getPlace_of_work());
+		preparedStatement.setString(17, client.getJob_title());
+		preparedStatement.setString(18, client.getResidential_address());
+		preparedStatement.setInt(19, client.getMartial_status_id());
+		preparedStatement.setInt(20, client.getNationality_id());
+		preparedStatement.setInt(21, client.getDisability_id());
+		preparedStatement.setBoolean(22, client.getIs_retired());
+		preparedStatement.setBigDecimal(23, client.getMonthly_income());
 	}
 
     public List<Client> getClients() {
@@ -206,7 +203,6 @@ public class ClientDao {
 		client.setMiddle_name(rs.getString("middle_name"));
 		client.setBirthday_date(rs.getDate("birthday_date"));
 		
-		client.setGender(rs.getString("gender"));
 		client.setPassport_series(rs.getString("passport_series"));
 		client.setPassport_number(rs.getString("passport_number"));
 		client.setPassport_authority(rs.getString("passport_authority"));
@@ -220,17 +216,14 @@ public class ClientDao {
 		client.setEmail(rs.getString("email"));
 		client.setPlace_of_work(rs.getString("place_of_work"));
 		client.setJob_title(rs.getString("job_title"));
-		client.setResirential_city_id(rs.getInt("resirential_city_id"));
 		client.setResidential_address(rs.getString("residential_address"));
 		client.setMartial_status_id(rs.getInt("martial_status_id"));
 		client.setNationality_id(rs.getInt("nationality_id"));
 		client.setDisability_id(rs.getInt("disability_id"));
 		client.setIs_retired(rs.getBoolean("is_retired"));
-		client.setMonthly_income(rs.getDouble("monthly_income"));
-		client.setIs_reservist(rs.getBoolean("is_reservist"));
+		client.setMonthly_income(rs.getBigDecimal("monthly_income"));
 		
 		client.setActual_residential_city(rs.getString("actual_city"));
-		client.setResirential_city(rs.getString("residential_city"));
 		client.setMartial_status(rs.getString("martial_status"));
 		client.setNationality(rs.getString("nationality"));
 		client.setDisability(rs.getString("disability_name"));
