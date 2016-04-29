@@ -13,4 +13,5 @@ WHERE
 	clients.nationality_id = nationality.id 
 	AND clients.disability_id = disability.id 
 	AND clients.martial_status_id = martial_status.id
+ORDER BY clients.last_name
   
