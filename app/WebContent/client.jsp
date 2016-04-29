@@ -59,11 +59,11 @@
     			<td>
     			<div>
     				<label for="male">Male</label>
-  					<input type="radio" name="gender" id="male" value="male" checked><br>
+  					<input type="radio" name="gender" id="male" value="male" ${'male' == client.gender ? 'checked' : ''}><br>
   					<label for="female">Female</label>
-  					<input type="radio" name="gender" id="female" value="female"><br>
+  					<input type="radio" name="gender" id="female" value="female" ${'female' == client.gender ? 'checked' : ''}><br>
   					<label for="other">Other</label>
-  					<input type="radio" name="gender" id="other" value="other"><br><br>
+  					<input type="radio" name="gender" id="other" value="other" ${'other' == client.gender ? 'checked' : ''}  ><br><br>
     			</div>
     			</td>
     		</tr>
