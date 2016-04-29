@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `MyBankDB`.`clients` (
   `nationality_id` INT NOT NULL,
   `disability_id` INT NOT NULL,
   `is_retired` TINYINT(1) NOT NULL,
-  `monthly_income` DECIMAL(5) NULL,
+  `monthly_income` DECIMAL(45, 2) NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_clients_cities1`
     FOREIGN KEY (`actual_residential_city_id`)
