@@ -163,9 +163,9 @@
     				<c:out value="${client.monthly_income}" />
     			</td>
     		</tr>
-    		
-    	</table>		 
-        
+    	</table>
+    			 
+        <button type="button" name="back" onclick="history.back()">¬¯¬Ñ¬Ù¬Ñ¬Õ</button>
         </div>
 </body>
 </html>

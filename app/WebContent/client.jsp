@@ -31,8 +31,6 @@
             
             $("input[name=home_phone_number]").mask("+999 99 9999999");
             $("input[name=cellular_phone_number]").mask("+999 99 9999999");
-            
-            $("input[name=monthly_income]").mask("+999 99 9999999");
         });
     </script>
    
@@ -218,7 +216,8 @@
     	</table>		 
         
         </div>
-        <input type="submit" value="Submit" />
+        <button type="button" name="back" onclick="history.back()">Назад</button>
+        <input type="submit" value="Сохранить" />
     </form>
    
     
