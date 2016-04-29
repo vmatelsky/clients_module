@@ -22,7 +22,7 @@
     </script>
 
     <form method="POST" action='ClientsController' name="addClient">
-    <div class="CSSTableGenerator" >
+    <div >
     	<table>
     		<tr>
     			<td>Client ID : </td>
@@ -107,7 +107,7 @@
     		<tr>
     			<td>Actual residential city : </td>
     			<td>
-    			<select name="TypeServ">
+    			<select name="actual_residential_city_id">
     				<c:forEach items="${cities}" var="city">
     					<option value="${city.id}" ${city.id == client.actual_residential_city_id ? 'selected="selected"' : ''}> <c:out value="${city.name}" /> </option>
     				</c:forEach>
@@ -160,7 +160,7 @@
     		<tr>
     			<td>Residential city : </td>
     			<td>
-    			<select name="TypeServ1">
+    			<select name="resirential_city_id">
     				<c:forEach items="${cities}" var="city">
     					<option value="${city.id}" ${city.id == client.resirential_city_id ? 'selected="selected"' : ''} > <c:out value="${city.name}" /> </option>
     				</c:forEach>
@@ -178,7 +178,7 @@
     		<tr>
     			<td>Martial status : </td>
     			<td>
-    			<select name="TypeServ1">
+    			<select name="martial_status_id">
     				<c:forEach items="${marital_status}" var="item">
     					<option value="${item.id}" ${item.id == client.martial_status_id ? 'selected="selected"' : ''} > <c:out value="${item.name}" /> </option>
     				</c:forEach>
@@ -189,7 +189,7 @@
     		<tr>
     			<td>Nationality : </td>
     			<td>
-    			<select name="TypeServ1">
+    			<select name="nationality_id">
     				<c:forEach items="${nationalities}" var="item">
     					<option value="${item.id}" ${item.id == client.nationality_id ? 'selected="selected"' : ''} > <c:out value="${item.name}" /> </option>
     				</c:forEach>
@@ -200,7 +200,7 @@
     		<tr>
     			<td>Disabilities : </td>
     			<td>
-    			<select name="TypeServ1">
+    			<select name="disability_id">
     				<c:forEach items="${disabilities}" var="item">
     					<option value="${item.id}" ${item.id == client.disability_id ? 'selected="selected"' : ''} > <c:out value="${item.name}" /> </option>
     				</c:forEach>
@@ -216,7 +216,7 @@
     		</tr>
     		
     		<tr>
-    			<td>Residential address : </td>
+    			<td>Monthly income : </td>
     			<td>
     				<input type="text" name="monthly_income" value="<c:out value="${client.monthly_income}" />" /> <br />  
     			</td>

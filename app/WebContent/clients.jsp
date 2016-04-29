@@ -14,7 +14,7 @@
 <title>Clients</title>
 </head>
 <body>
-<div class="CSSTableGenerator" >
+<div>
 	<table>
 		<thead>
 			<tr>
@@ -33,10 +33,10 @@
 					<td><c:out value="${client.id}" /></td>
 					<td><c:out value="${client.first_name}" /></td>
 					<td><c:out value="${client.last_name}" /></td>
-					
 					<td><fmt:formatDate pattern="yyyy-MMM-dd" value="${client.birthday_date}" /></td>
 					<td><c:out value="${client.email}" /></td>
-					<%-- <td><c:out value="${client.gender}" /></td>
+					
+					<%--  <td><c:out value="${client.gender}" /></td>
 					<td><c:out value="${client.passport_series}" /></td>
 					<td><c:out value="${client.passport_number}" /></td>
 					<td><c:out value="${client.passport_authority}" /></td>

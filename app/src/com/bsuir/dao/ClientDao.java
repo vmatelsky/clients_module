@@ -28,7 +28,17 @@ public class ClientDao {
     }
 
     public void addClient(Client client) {
-        // TODO:
+    	try {
+            String fileAsString = fileAsString("/addClient.sql");
+			PreparedStatement preparedStatement = connection.prepareStatement(fileAsString);
+
+			prepareStatementForUser(client, preparedStatement);
+            
+            preparedStatement.executeUpdate();
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void deleteClient(int clientId) {
@@ -46,8 +56,48 @@ public class ClientDao {
     }
 
     public void updateClient(Client client) {
-        // TODO:
+        try {
+            String fileAsString = fileAsString("/updateClient.sql");
+			PreparedStatement preparedStatement = connection.prepareStatement(fileAsString);
+
+			prepareStatementForUser(client, preparedStatement);
+			
+			preparedStatement.setInt(27, client.getId());
+            
+            preparedStatement.executeUpdate();
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
     }
+
+	private void prepareStatementForUser(Client client, PreparedStatement preparedStatement) throws SQLException {
+		preparedStatement.setString(1, client.getFirst_name());
+		preparedStatement.setString(2, client.getLast_name());
+		preparedStatement.setString(3, client.getMiddle_name());
+		preparedStatement.setDate(4, new java.sql.Date(client.getBirthday_date().getTime()));
+		preparedStatement.setString(5, client.getGender());
+		preparedStatement.setString(6, client.getPassport_series());
+		preparedStatement.setString(7, client.getPassport_number());
+		preparedStatement.setString(8, client.getPassport_authority());
+		preparedStatement.setDate(9, new java.sql.Date(client.getPassport_issue_date().getTime()));
+		preparedStatement.setString(10, client.getPassport_identification_number());
+		preparedStatement.setString(11, client.getBirthday_place());
+		preparedStatement.setInt(12, client.getActual_residential_city_id());
+		preparedStatement.setString(13, client.getActual_address());
+		preparedStatement.setString(14, client.getHome_phone_number());
+		preparedStatement.setString(15, client.getCellular_phone_number());
+		preparedStatement.setString(16, client.getEmail());
+		preparedStatement.setString(17, client.getPlace_of_work());
+		preparedStatement.setString(18, client.getJob_title());
+		preparedStatement.setInt(19, client.getResirential_city_id());
+		preparedStatement.setString(20, client.getResidential_address());
+		preparedStatement.setInt(21, client.getMartial_status_id());
+		preparedStatement.setInt(22, client.getNationality_id());
+		preparedStatement.setInt(23, client.getDisability_id());
+		preparedStatement.setBoolean(24, client.getIs_retired());
+		preparedStatement.setDouble(25, client.getMonthly_income());
+		preparedStatement.setBoolean(26, client.getIs_reservist());
+	}
 
     public List<Client> getClients() {
         List<Client> clients = new ArrayList<Client>();
