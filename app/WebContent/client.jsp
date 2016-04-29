@@ -36,8 +36,10 @@
    
 
     <form method="POST" action='.' name="addClient">
-    <div >
-    	<table>
+    <div style="text-align: center">   
+	<div id="wrapper">
+		<h1>Клиент <c:out value="${client.id}" /></h1>
+    	<table id="keywords" cellspacing="0" cellpadding="0">
     		<tr>
     			<td>ID : </td>
     			<td>
@@ -215,9 +217,11 @@
     		
     	</table>		 
         
-        </div>
         <button type="button" name="back" onclick="history.back()">Назад</button>
         <input type="submit" value="Сохранить" />
+        </div>
+        </div>
+        
     </form>
    
     

@@ -14,11 +14,15 @@
 <title>¬¬¬Ý¬Ú¬Ö¬ß¬ä <c:out value="${client.id}" /></title>
 </head>
 <body>
+   <div style="text-align: center">   
+    <div id="wrapper">
     
-    <div >
-    	<table>
+    	<h1>¬¬¬Ý¬Ú¬Ö¬ß¬ä <c:out value="${client.id}" /></h1>
+    
+    	<table id="keywords" cellspacing="0" cellpadding="0">
+    	<tbody>
     		<tr>
-    			<td>ID : </td>
+    			<td >ID : </td>
     			<td><c:out value="${client.id}" /></td>
     		</tr>
     		<tr>
@@ -163,9 +167,11 @@
     				<c:out value="${client.monthly_income}" />
     			</td>
     		</tr>
+    		</tbody>
     	</table>
     			 
         <button type="button" name="back" onclick="history.back()">¬¯¬Ñ¬Ù¬Ñ¬Õ</button>
+        </div>
         </div>
 </body>
 </html>

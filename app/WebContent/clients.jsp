@@ -11,20 +11,25 @@
 <script type="text/javascript" src="js/jquery-1.7.1.js"></script>
 <script type="text/javascript" src="js/jquery-ui.js"></script>
 
+
 <title>Клиенты</title>
 </head>
 <body>
-<div>
-	<table>
+<div style="text-align: center">   
+	<div id="wrapper">
+
+	<h1>Список клиентов</h1>
+
+	<table id="keywords" cellspacing="0" cellpadding="0">
 		<thead>
 			<tr>
-				<th>ID</th>
-				<th>Имя</th>
-				<th>Фамилия</th>
-				<th>Дата рождения</th>
+				<th><span>ID</span></th>
+				<th><span>Имя</span></th>
+				<th><span>Фамилия</span></th>
+				<th><span>Дата рождения</span></th>
 								
-				<th>E-mail</th>
-				<th colspan=3>Действия</th>
+				<th><span>E-mail</span></th>
+				<th colspan=3><span>Действия</span></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -35,30 +40,7 @@
 					<td><c:out value="${client.last_name}" /></td>
 					<td><fmt:formatDate pattern="yyyy-MMM-dd" value="${client.birthday_date}" /></td>
 					<td><c:out value="${client.email}" /></td>
-					
-					<%--  <td><c:out value="${client.gender}" /></td>
-					<td><c:out value="${client.passport_series}" /></td>
-					<td><c:out value="${client.passport_number}" /></td>
-					<td><c:out value="${client.passport_authority}" /></td>
-					<td><fmt:formatDate pattern="yyyy-MMM-dd" value="${client.passport_issue_date}" /></td>
-					<td><c:out value="${client.passport_identification_number}" /></td>
-					<td><c:out value="${client.birthday_place}" /></td>
-					<td><c:out value="${client.actual_residential_city}" /></td>
-					<td><c:out value="${client.actual_address}" /></td>
-					<td><c:out value="${client.home_phone_number}" /></td>
-					<td><c:out value="${client.cellular_phone_number}" /></td>
-					<td><c:out value="${client.email}" /></td>
-					<td><c:out value="${client.place_of_work}" /></td>
-					<td><c:out value="${client.job_title}" /></td>
-					<td><c:out value="${client.resirential_city_id}" /></td>
-					<td><c:out value="${client.residential_address}" /></td>
-					<td><c:out value="${client.martial_status_id}" /></td>
-					<td><c:out value="${client.nationality_id}" /></td>
-					<td><c:out value="${client.disability_id}" /></td>
-					<td><c:out value="${client.is_retired}" /></td>
-					<td><c:out value="${client.monthly_income}" /></td>
-					<td><c:out value="${client.is_reservist}" /></td> --%>
-					
+
 					<td><a
 						href="ClientsController?action=view&clientId=<c:out value="${client.id}" />">Просмотреть</a></td>
 					<td><a
@@ -69,9 +51,11 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	
+	<span><a href="ClientsController?action=insert">Добавить клиента</a></span>
+	
 	</div>
-	<p>
-		<a href="ClientsController?action=insert">Добавить клиента</a>
-	</p>
+	</div>
+	
 </body>
 </html>
